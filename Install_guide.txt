@@ -1,0 +1,68 @@
+frankmocap 
+Build Environment ubuntu18.04 torch 1.6.0 cudatoolkit=10.1 python=3.7 
+
+conda create -n frankmocap python=3.7
+conda activate frankmocap
+sudo apt-get install ffmpeg
+conda install -c pytorch pytorch==1.6.0 torchvision cudatoolkit=10.1
+
+git clone https://github.com/facebookresearch/frankmocap.git
+cd frankmocap
+pip install -r docs/requirements.txt
+
+#install detr2 from source
+python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
+(prebuilt XXX)
+
+pip install pytorch3d 
+
+sudo sh scripts/install_frankmocap.sh
+
+under ./extra_data/
+./extra_data/
+├── hand_module
+│   └── mean_mano_params.pkl
+│   └── SMPLX_HAND_INFO.pkl
+|   └── pretrained_weights
+|   |   └── pose_shape_best.pth
+│   └── hand_detector
+│       └── faster_rcnn_1_8_132028.pth  
+│       └── model_0529999.pth
+├── body_module
+|   └──body_pose_estimator
+|       └── checkpoint_iter_370000.pth     
+└── smpl
+    └── basicModel_neutral_lbs_10_207_0_v1.0.0.pkl
+    └── SMPLX_NEUTRAL.pkl
+    
+./detectors/
+├── body_pose_estimator
+├── hand_object_detector
+└── hand_only_detector
+
+******install hand_detector******
+not through the sh install_hand_detectors.sh
+
+git clone https://github.com/ddshan/hand_object_detector 
+cd hand_object_detector
+pip install -r requirements.txt
+cd lib
+python setup.py build develop
+
+cd ..
+cd ..
+sudo sh scripts/install_pose2d.sh
+
+input_path default:webcam 
+
+***Test**
+python -m demo.demo_bodymocap --input_path ./sample_data/han_short.mp4 --out_dir ./mocap_output --renderer_type pytorch_3d
+
+***Real_Time***
+python -m demo.demo_bodymocap --out_dir ./mocap_output
+
+***With ROS***
+[Server] python server_ros.py
+[Client] python python -m demo.client_ros 
+
+
