@@ -18,27 +18,35 @@ pip install pytorch3d
 
 sudo sh scripts/install_frankmocap.sh
 
-under ./extra_data/
-./extra_data/
-├── hand_module
-│   └── mean_mano_params.pkl
-│   └── SMPLX_HAND_INFO.pkl
-|   └── pretrained_weights
-|   |   └── pose_shape_best.pth
-│   └── hand_detector
-│       └── faster_rcnn_1_8_132028.pth  
-│       └── model_0529999.pth
-├── body_module
-|   └──body_pose_estimator
-|       └── checkpoint_iter_370000.pth     
-└── smpl
-    └── basicModel_neutral_lbs_10_207_0_v1.0.0.pkl
-    └── SMPLX_NEUTRAL.pkl
-    
-./detectors/
-├── body_pose_estimator
-├── hand_object_detector
-└── hand_only_detector
+
+├── ./extra_data/
+    ├── hand_module
+    │   └── mean_mano_params.pkl
+    │   └── SMPLX_HAND_INFO.pkl
+    |   └── pretrained_weights
+    |   |   └── pose_shape_best.pth
+    │   └── hand_detector
+    │       └── faster_rcnn_1_8_132028.pth  
+    │       └── model_0529999.pth
+    ├── body_module
+    |   └──body_pose_estimator
+    |       └── checkpoint_iter_370000.pth     
+    └── smpl
+        └── basicModel_neutral_lbs_10_207_0_v1.0.0.pkl
+        └── SMPLX_NEUTRAL.pkl
+
+    ./detectors/
+    ├── body_pose_estimator
+    ├── hand_object_detector
+    └── hand_only_detector
+
+    ./demo/
+    ├── client_ros.py
+    ├── server_ros.py
+
+├── run_hand_mocap.py
+
+
 
 ******install hand_detector******
 not through the sh install_hand_detectors.sh
