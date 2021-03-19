@@ -5,11 +5,14 @@
 
 <code>
 conda create -n frankmocap python=3.7
-
+</code>
+<code>
 conda activate frankmocap
-
+</code>
+<code>
 sudo apt-get install ffmpeg
-
+</code>
+<code>
 conda install -c pytorch pytorch==1.6.0 torchvision cudatoolkit=10.1
 </code>
 
